@@ -1,14 +1,5 @@
 def main():
-    book = read()
-    count = word_count(book)
-    chars = char_count(book)
-    print(f"""
---- Begin report of books/frankenstein.txt
-{count} words found in the document"
-""")
-    for item in chars:
-        print(f"The '{item['character']}' character was found {item['num']} times")
-    print('--- End report ---')
+    report()
 def read():
     with open("books/frankenstein.txt") as f:
         file_contents = f.read()
@@ -38,5 +29,15 @@ def char_range(c1, c2):
     """Generates the characters from `c1` to `c2`, inclusive."""
     for c in range(ord(c1), ord(c2)+1):
         yield chr(c)
-
+def report():
+    book = read()
+    count = word_count(book)
+    chars = char_count(book)
+    print(f"""
+--- Begin report of books/frankenstein.txt
+{count} words found in the document"
+""")
+    for item in chars:
+        print(f"The '{item['character']}' character was found {item['num']} times")
+    print('--- End report ---')
 main()
